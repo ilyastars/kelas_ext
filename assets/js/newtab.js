@@ -1,20 +1,54 @@
 function $(id) {
     return document.getElementById(id);
 }
+/*cari sneped*/
 
-function get(url){
+function create(name, props) {
+    element = document.createElement(name)
+
+    for (var i in props) {
+        element[i] = props[i]
+    }
+
+    return element
+}
+
+function get(url, nameFunc){
 
 // ajax js native
-xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function (){
-    if (this.readyState == 4 && this.status == 200){
-        res = JSON.parse(this.responseText);
-        $('ayat').innerHTML = res.ayat.data.ar[0].teks
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function (){
+        if (this.readyState == 4 && this.status == 200){
+            nameFunc(JSON.parse(this.responseText))
+        }
     }
+
+    xhttp.open('GET', url, true)
+    xhttp.send()
 }
 
-xhttp.open("GET", url, true)
-xhttp.send()
+function listSurah(res){
+    //console.log(res.hasil.length);
+    
+    var msgContainer = document.createDocumentFragment()
+
+    for (var i = 0; i < res.hasil.length; i++) {
+        msgContainer.appendChild(create('option', {
+            text: res.hasil[i].nama,
+            value: res.hasil[i].nomor
+        }))
+    }
+
+    $('listSurah').appendChild(msgContainer)
 }
 
-get("https://api.banghasan.com/quran/format/json/surat/1/ayat/1")
+function ayat(res){
+    $('ayat').innerHTML = res.ayat.data.ar[0].teks
+    $('terjemah').innerHTML = res.ayat.data.id[0].teks
+    
+}
+
+window.onload = function (){
+    get("https://api.banghasan.com/quran/format/json/surat/1/ayat/1", ayat)
+    get("https://api.banghasan.com/quran/format/json/surat", listSurah)
+}

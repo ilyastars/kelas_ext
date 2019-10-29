@@ -1,0 +1,32 @@
+body{
+    background-image: url(/assets/img/background.jpg);
+    background-repeat;: no-repeat; /* untuk menyesuaikan dengan ukuran browser */
+    background-size: cover; /* pelapis */
+}
+
+.container {
+    padding: 1 rem 5 rem;
+}
+
+.wraf-ayat{
+    color: white;
+    font-size: 20px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    min-width: 400px;
+    max-width: calc(65vw - 300px);
+    max-height: 40vh;
+    overflow:auto ;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30vh;
+}
+
+span {
+    display: block;
+}
+
+#terjemah {
+    margin-top:1rem;
+}
