@@ -1,6 +1,6 @@
 body{
     background-image: url(/assets/img/background.jpg);
-    background-repeat;: no-repeat; /* untuk menyesuaikan dengan ukuran browser */
+    background-repeat: no-repeat; /* untuk menyesuaikan dengan ukuran browser */
     background-size: cover; /* pelapis */
 }
 
@@ -8,19 +8,111 @@ body{
     padding: 1 rem 5 rem;
 }
 
-.wraf-ayat{
-    color: white;
-    font-size: 20px;
-    padding: 30px;
+.atas{
+    border-radius: 5px;
+    display: block;
+    max-height: 80vh;
+    overflow:auto ;
+    text-align: center;
+    margin: 0 auto;
+}
+.wrap-list{
     background: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    min-width: 400px;
-    max-width: calc(65vw - 300px);
+    min-width: 275px;
+    max-width: 65vh;
+    max-height: 80vh;
+    overflow:auto ;
+    text-align: left;
+    margin: 0 auto;
+    float: left;
+    color: white;
+}
+#listSurah{
+    overflow:auto ;
+    text-align: left;
+    margin: 0 auto;
+    float: left;
+    background-color: transparent;
+    border: transparent;
+    margin-top: 5px;
+    color: white;    
+}
+#listAyat{
+    overflow:auto ;
+    text-align: left;
+    margin: 0 auto;
+    float: left;
+    background-color: transparent;
+    border: transparent;
+    margin-top: 5px;
+    color: white;
+}
+h2{
+    overflow:auto ;
+    text-align: left;
+    margin: 0 auto;
+    float: left;
+}
+#jumlahAyat{
+    overflow:auto ;
+    text-align: left;
+    margin: 0 auto;
+    float: left;
+    position: relative;
+    background-color: transparent;
+    border: transparent;
+    margin-top: 5px;
+    color: white;
+}
+.isi{
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    min-width: 555px;
+    max-width: calc(75vw - 130px);
+    max-height: 80vh;
+    overflow:auto ;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+.prev{
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 50px;
     max-height: 40vh;
     overflow:auto ;
     text-align: center;
     margin: 0 auto;
-    margin-top: 30vh;
+    float: left;
+    padding-top: 50px
+}
+.next{
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 50px;
+    max-height: 40vh;
+    overflow:auto ;
+    text-align: center;
+    margin: 0 auto;
+    float: left;
+    padding-top: 50px
+}
+.wraf-ayat{
+    color: white;
+    font-size: 20px;
+    padding: 30px;
+    border-radius: 5px;
+    width: 734px;
+    /* min-width: 395px;
+    max-width: calc(65vw - 155px); */
+    max-height: 40vh;
+    overflow:auto ;
+    text-align: center;
+    margin: 0 auto;
+    float: left;
 }
 
 span {
@@ -29,4 +121,15 @@ span {
 
 #terjemah {
     margin-top:1rem;
+}
+
+#startPos {
+    color: white;
+    font-size: 20px;
+    padding: 30px;
+    border-radius: 5px;
+    width: 53vw;
+    max-height: 40vh;
+    overflow:auto ;
+    text-align: center;
 }
