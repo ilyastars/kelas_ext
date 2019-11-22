@@ -55,14 +55,14 @@ function listSurah(res){
     // console.log(res);
     
     var msgContainer = document.createDocumentFragment()
-
+    
     for (var i = 0; i < res.hasil.length; i++) {
         msgContainer.appendChild(create('option', {
             text: res.hasil[i].nama,
             value: res.hasil[i].nomor
         }))
     }
-
+    
     $('listSurah').appendChild(msgContainer)
 }
 
@@ -78,7 +78,7 @@ function listAyat(res){
             value: i
         }))
     }
-
+    
     $('listAyat').appendChild(msgContainer)
     // $('listAyat').value = 7
 }
@@ -93,7 +93,7 @@ function jumlahAyat(res){
 function ayat(res){
     $('ayat').innerHTML = res.ayat.data.ar[0].teks
     $('terjemah').innerHTML = res.ayat.data.id[0].teks
-    console.log(res);
+    // console.log(res);
 }
 
 function change(surahSelect, ayatSelect) {
@@ -102,58 +102,88 @@ function change(surahSelect, ayatSelect) {
 
 function imsak(res){
     $('imsak').innerHTML = res.jadwal.data.imsak
-    console.log(res.jadwal.data);
+    // console.log(res.jadwal.data);
     // console.log(Date())
 }
 function subuh(res){
     $('subuh').innerHTML = res.jadwal.data.subuh
-
+    
 }
 function terbit(res){
     $('terbit').innerHTML = res.jadwal.data.terbit
-    console.log(res.jadwal.data);
+    // console.log(res.jadwal.data);
     // console.log(Date())
 }
 function dhuha(res){
     $('dhuha').innerHTML = res.jadwal.data.dhuha
-
-}function dzuhur(res){
+    
+}
+function dzuhur(res){
     $('dzuhur').innerHTML = res.jadwal.data.dzuhur
-    console.log(res.jadwal.data);
+    // console.log(res.jadwal.data);
     // console.log(Date())
 }
 function ashar(res){
     $('ashar').innerHTML = res.jadwal.data.ashar
-
+    
 }function maghrib(res){
     $('maghrib').innerHTML = res.jadwal.data.maghrib
-    console.log(res.jadwal.data);
+    // console.log(res.jadwal.data);
     // console.log(Date())
 }
 function isya(res){
     $('isya').innerHTML = res.jadwal.data.isya
-
+    
 }
 function tanggal(res){
     $('tanggal').innerHTML = res.jadwal.data.tanggal
-
+    // console.log(res)
 }
 
 function waktuSholat(res){
     console.log(res)
 }
+// $('.sholat').onchange = function(){
+//     if ($('date').value <= $('imsak').value){
+//         e = "imsak"
+//         console.log(e)
+//         // $('.sholat')
+//     }
+//     else if ($('date').value <= $('subuh').value){
+//         e = "imsak"
+//         console.log(e)
+//     }else if ($('date').value <= $('terbit').value){
+//         e = "imsak"
+//         console.log(e)
+//     }else if ($('date').value <= $('dhuha').value){
+//         e = "imsak"
+//         console.log(e)
+//     }else if ($('date').value <= $('dzuhur').value){
+//         e = "imsak"
+//         console.log(e)
+//     }else if ($('date').value <= $('ashar').value){
+//         e = "imsak"
+//         console.log(e)
+//     }else if ($('date').value <= $('maghrib').value){
+//         e = "imsak"
+//         console.log(e)
+//     }else if ($('date').value <= $('isya').value){
+//         e = "imsak"
+//         console.log(e)
+//     }
+// }
 
 // function printText(){
-//     document.getElementById("date").innerHTML = Date;
-// }
-// printText();
-
-// var d = new Date(){
-//     console.log(d);
-// }
-
-
-window.onload = function (){
+    //     document.getElementById("date").innerHTML = Date;
+    // }
+    // printText();
+    
+    // var d = new Date(){
+        //     console.log(d);
+        // }
+        
+        
+    window.onload = function (){
     surahSelected = 1
     ayatSelected = 1
     jumlahayat = 7
@@ -161,12 +191,14 @@ window.onload = function (){
     $('listSurah').addEventListener('change', function(){
         // console.log("ok")
         surahSelected = this.value
-        change(surahSelected, ayatSelected, jumlahAyat)
         get("https://api.banghasan.com/quran/format/json/surat/" + surahSelected,jumlahAyat) /*jumlahAyat*/
+        // change(surahSelected, jumlahayat)
         ayatSelected = 1
-        // change(surahSelected, ayatSelected)
         get("https://api.banghasan.com/quran/format/json/surat/"+surahSelected, listAyat)
+        change(surahSelected, ayatSelected, jumlahayat)
+        jumlahayat = $('jumlahAyat').value
         // $('jumlahAyat').innerHTML
+            console.log(surahSelected, ayatSelected, jumlahayat, this.value);
     })
     
     //even ayat
@@ -177,6 +209,7 @@ window.onload = function (){
     
     $('jumlahAyat').addEventListener('change', function(){
         // $('listSurah').value = 
+                get("https://api.banghasan.com/quran/format/json/surat/1", jumlahAyat)
         change(surahSelected, this.value)
         // get("https://api.banghasan.com/quran/format/json/surat/" + surahSelected + "/ayat/"+ + this.value, ayat)
     })
@@ -186,9 +219,8 @@ window.onload = function (){
         if (ayatSelected != jumlahayat) {
             ayatSelected += 1
             change(surahSelected, ayatSelected)
-            // console.log(surahSelected, ayatSelected, jumlahayat, this.value);
-        } else {
             console.log(surahSelected, ayatSelected, jumlahayat, this.value);
+        } else {
             ayatSelected = 1
             surahSelected ++
             get("https://api.banghasan.com/quran/format/json/surat/"+surahSelected, listAyat)
@@ -197,6 +229,7 @@ window.onload = function (){
             get("https://api.banghasan.com/quran/format/json/surat/" + surahSelected,jumlahAyat)
             jumlahayat = $('jumlahAyat').value
             // console.log("ganti surah wooi")
+            console.log(surahSelected, ayatSelected, jumlahayat, this.value);
         }
         //     $('jumlahAyat').value = jumlahayat
         // if (ayatSelected <= jumlahayat){    
@@ -213,10 +246,26 @@ window.onload = function (){
                 $('listAyat').value = ayatSelected
                 // get("https://api.banghasan.com/quran/format/json/surat/" + surahSelected + "/ayat/" + this.value, ayat)
                 // console.log(jumlahayat)
-                console.log(surahSelected, ayatSelected, jumlahayat, this.value);
+                // console.log(surahSelected, ayatSelected, jumlahayat, this.value);
             })
             
-            $('prev').addEventListener('click', function(){
+            // Jumlah = function(){
+            //     return new Promise(resolve function{
+            //         setTimeout(() function{
+            //             resolve(get("https://api.banghasan.com/quran/format/json/surat/" + surahSelected,jumlahAyat));
+            //         }, 3000)
+            //     });
+            // };
+
+            // Ayat = function(){
+            //     return new Promise(resolve function{
+            //         setTimeout(() function{
+            //             resolve(get("https://api.banghasan.com/quran/format/json/surat/"+surahSelected, listAyat));
+            //         }, 3000)
+            //     });
+            // };
+
+            $('prev').addEventListener('click', async function(){
                 // change('prev = listAyat + 1')
                 // result
                 if (ayatSelected != 1){
@@ -226,18 +275,30 @@ window.onload = function (){
                     console.log(surahSelected, ayatSelected, jumlahayat, this.value);
                     
                 } else {
-                    console.log(surahSelected, ayatSelected, jumlahayat, this.value);
                     surahSelected--
-                    get("https://api.banghasan.com/quran/format/json/surat/" + surahSelected,jumlahAyat)
-                    // ayatSelected = $('jumlahAyat').value
-                    // $('listSurah').value = surahSelected
-                    // change(surahSelected, ayatSelected)
+                    $('listSurah').value = surahSelected
+
+                    // const first = await this.Jumlah();
+                    // const last = await this.Ayat();
+                    // this.setState({
+                    //     Ayat = Jumlah
+                    // })
+                    // ayatSelected = jumlahayat
+
+                    const a = await get("https://api.banghasan.com/quran/format/json/surat/" + surahSelected,jumlahAyat)
+                    console.log(a)
                     // jumlahayat = $('jumlahAyat').value
+                    // ayatSelected = $('jumlahAyat').value
+                    await get("https://api.banghasan.com/quran/format/json/surat/"+surahSelected, listAyat)
+                        // this.setState({
+                        //     listAyat = jumlahAyat
+                        // })
+
+                    // change(surahSelected, ayatSelected)
                     // // console.log($('jumlahAyat').value)
                     // // $('jumlahAyat').value = jumlahayat
-                    get("https://api.banghasan.com/quran/format/json/surat/"+surahSelected, listAyat)
-                    ayatSelected = jumlahayat
-                    $('listAyat').value = 7
+                    console.log(surahSelected, ayatSelected, jumlahayat, this.value);
+                    // $('listAyat').value = 7
                     // // $('ayat').value = ayatSelected
                     
                     
@@ -258,12 +319,19 @@ window.onload = function (){
                 }
                 
     var d = new Date();
-    var now =  d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();
+    var bln = d.getMonth() + 1;
+    var now =  d.getFullYear()+'-'+bln+'-'+d.getDate();
     // var d = new Date();
     var hours = d.getHours()+':'+d.getMinutes();
     document.getElementById("date").innerHTML = hours
     // console.log(d);
-    
+    // if hours <= $('ashar').value{
+    //     e = "ashar";
+    //     console.log(e);
+    // }
+
+
+
                 get("https://api.banghasan.com/quran/format/json/surat/1/ayat/1", ayat)
                 get("https://api.banghasan.com/quran/format/json/surat", listSurah)
                 get("https://api.banghasan.com/quran/format/json/surat/1", listAyat)

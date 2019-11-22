@@ -14,19 +14,23 @@ body{
     max-height: 80vh;
     overflow:auto ;
     text-align: center;
-    margin: 0 auto;
+    margin: 18px 32px 0 32px;
 }
-.wrap-list{
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    min-width: 275px;
-    max-width: 65vh;
+.wrap-list {
+    min-width: 150px;
+    max-width: 195px;
     max-height: 80vh;
-    overflow:auto ;
-    text-align: left;
-    margin: 0 auto;
+    text-align: center;
     float: left;
-    color: white;
+    color: black;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    overflow: auto;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 2px 20px;
 }
 #listSurah{
     overflow:auto ;
@@ -36,7 +40,7 @@ body{
     background-color: transparent;
     border: transparent;
     margin-top: 5px;
-    color: white;    
+    color: black;    
 }
 #listAyat{
     overflow:auto ;
@@ -46,13 +50,14 @@ body{
     background-color: transparent;
     border: transparent;
     margin-top: 5px;
-    color: white;
+    color: black;
 }
 h2{
     overflow:auto ;
     text-align: left;
     margin: 0 auto;
     float: left;
+    color: black;
 }
 #jumlahAyat{
     overflow:auto ;
@@ -63,8 +68,66 @@ h2{
     background-color: transparent;
     border: transparent;
     margin-top: 5px;
-    color: white;
+    color: black;
 }
+.tgl {
+    float: right;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    padding: 6px 17px;
+}
+h9{
+    float: left;
+}
+#tanggal{
+    float: right;
+}
+
+.row{
+    text-align: center;
+}
+.jam {
+    background-color: rgba(0, 0, 0, 0.45);
+    font-size: 45px;
+    color: white;
+    padding: 15px;
+    border-radius: 7px;
+    width: 115px;
+    overflow: auto;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.waktu-sholat {
+    display: inline-block;
+    border-radius: 5px;
+    min-width: 555px;
+    max-width: calc(75vw - 130px);
+    max-height: 80vh;
+    overflow: auto;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+h6{
+    margin: 0px;
+}
+p{
+    margin: 0px;
+}
+.sholat {
+    background-color: rgba(0, 0, 0, 0.45);
+    font-size: 20px;
+    color: white;
+    padding: 15px;
+    margin: 5px 14px;
+    border-radius: 7px;
+    float: left;
+}
+
 .isi{
     background: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
@@ -74,7 +137,7 @@ h2{
     overflow:auto ;
     text-align: center;
     margin: 0 auto;
-    margin-top: 150px;
+    margin-top: 15px;
 }
 .prev{
     color: white;
